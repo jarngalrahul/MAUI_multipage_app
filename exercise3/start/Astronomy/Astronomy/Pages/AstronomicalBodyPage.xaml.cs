@@ -1,5 +1,6 @@
 namespace Astronomy.Pages;
 
+[QueryProperty(nameof(AstroName),"astroName")]
 public partial class AstronomicalBodyPage : ContentPage
 {
 
@@ -8,6 +9,16 @@ public partial class AstronomicalBodyPage : ContentPage
         InitializeComponent();
     }
 
+    string astroName;
+    public string AstroName
+    {
+        get => astroName;
+        set
+        {
+            astroName = value;
+            UpdateAstroBodyUI(astroName);
+        }
+    }
     void UpdateAstroBodyUI(string astroName)
     {
         AstronomicalBody body = FindAstroData(astroName);
